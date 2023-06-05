@@ -4,12 +4,12 @@ import scapy.all as scapy
 class ARPPing():
 
 	def __init__(self):
-		print("ARPPing initialized")
+		print("ARPPingleme başlatıldı.")
 
-	def get_user_input(self):
+	def kullanici_input(self):
 		parser = argparse.ArgumentParser()
 
-		parser.add_argument('-i', '--ipaddress', type=str, help="Enter ip range to send ARP ping")
+		parser.add_argument('-i', '--ipaddress', type=str, help="ARP pingi yollanılacak ip range girin!!!")
 		args = parser.parse_args()
 		print(args.ipaddress)
 
@@ -19,7 +19,7 @@ class ARPPing():
 			print("Enter ip range!")
 
 
-	def execute_arp(self,ip):
+	def arp_calistir(self,ip):
 
 		arp_request_packet = scapy.ARP(pdst=ip)
 
@@ -33,5 +33,5 @@ class ARPPing():
 
 if __name__ == "__main__":
 	arp_ping = ARPPing()
-	ip_range = arp_ping.get_user_input()
-	arp_ping.execute_arp(ip_range.ipaddress)
+	ip_range = arp_ping.kullanici_input()
+	arp_ping.arp_calistir(ip_range.ipaddress)
